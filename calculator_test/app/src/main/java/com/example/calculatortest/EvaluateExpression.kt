@@ -1,9 +1,9 @@
 package com.example.calculatortest
 
 import java.util.*
+// Source: https://www.geeksforgeeks.org/expression-evaluation/
 
-
-fun evaluate(expression: String): Int {
+fun evaluateGeeksForGeeks(expression: String): Int {
         val tokens = expression.toCharArray()
 
         // Stack for numbers: 'values'
