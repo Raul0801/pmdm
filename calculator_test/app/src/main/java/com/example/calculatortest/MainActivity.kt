@@ -10,7 +10,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var inText: TextView
     private lateinit var screen: TextView
     private lateinit var displayText: TextView
-    private lateinit var display: String
+    private var display: String = ""
     private lateinit var operatorUsed: String
     private lateinit var result: String
 
@@ -27,18 +27,24 @@ class MainActivity : AppCompatActivity() {
         displayText = findViewById(R.id.out_box)
     }
 
-    private fun onClickNumber(v: View) {
+    fun onClickNumber(v: android.view.View) {
         val but: Button = v as Button
         display += but.text
         append(display)
         display = ""
     }
 
-    private fun onClickOperator(v: View) {
+    fun onClickOperator(v: View) {
         val but: Button = v as Button
         display += but.text
         if (endsWithOperator()) {
-
+            replace(display)
+            operatorUsed = but.text.toString()
+            display = ""
+        } else {
+            append(display)
+            operatorUsed = but.text.toString()
+            display = ""
         }
     }
 
@@ -59,7 +65,7 @@ class MainActivity : AppCompatActivity() {
         return inText.text.toString()
     }
 
-    private fun onClearButton(v: View) {
+    fun onClearButton(v: View) {
         inText.text = ""
         displayText.text = ""
     }
@@ -73,4 +79,26 @@ class MainActivity : AppCompatActivity() {
 
         this.inText.text = out
     }
+
+    fun calculate(firstValue: String, secondValue: String, operator: String): Double {
+        var output: Double = (-1).toDouble()
+        if (!(operator.equals("/") && secondValue.equals("0"))) {
+            when (operator) {
+                "+" -> output = firstValue.toDouble() + secondValue.toDouble()
+                "-" -> output = firstValue.toDouble() - secondValue.toDouble()
+                "*" -> output = firstValue.toDouble() * secondValue.toDouble()
+                "/" -> output = firstValue.toDouble() / secondValue.toDouble()
+            }
+        }
+        return output
+    }
+
+    fun equals(v: View?) {
+        var input: String = getInput()
+        if (!endsWithOperator()) {
+
+        } else displayText.setText("")
+        println(result)
+    }
+
 }
