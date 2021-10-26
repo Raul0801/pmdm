@@ -11,15 +11,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var screen: TextView
     private lateinit var displayText: TextView
     private var display: String = ""
-    private lateinit var operatorUsed: String
-    private lateinit var result: String
+    private var operatorUsed: String = ""
+    private var result: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        val deleteVal = findViewById<Button>(R.id.button_delete)
-        deleteVal.setOnClickListener { deleteNumber() }
 
         screen = findViewById(R.id.in_box)
         screen.text = display
@@ -27,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         displayText = findViewById(R.id.out_box)
     }
 
-    fun onClickNumber(v: android.view.View) {
+    fun onClickNumber(v: View) {
         val but: Button = v as Button
         display += but.text
         append(display)
@@ -49,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun replace(str: String) {
-        inText.text.substring(0, inText.text.length-1)
+        inText.text = inText.text.substring(0, inText.text.length-1)
         append(str)
     }
 
@@ -57,8 +54,8 @@ class MainActivity : AppCompatActivity() {
         return getInput().endsWith("+") || getInput().endsWith("-") || getInput().endsWith("*") || getInput().endsWith("/")
     }
 
-    private fun deleteNumber() {
-        this.inText.text.drop(getInput().length - 1)
+    fun onDelButton(v: View) {
+        inText.text = inText.text.substring(0, inText.text.length - 1)
     }
 
     private fun getInput(): String {
@@ -80,23 +77,10 @@ class MainActivity : AppCompatActivity() {
         this.inText.text = out
     }
 
-    fun calculate(firstValue: String, secondValue: String, operator: String): Double {
-        var output: Double = (-1).toDouble()
-        if (!(operator.equals("/") && secondValue.equals("0"))) {
-            when (operator) {
-                "+" -> output = firstValue.toDouble() + secondValue.toDouble()
-                "-" -> output = firstValue.toDouble() - secondValue.toDouble()
-                "*" -> output = firstValue.toDouble() * secondValue.toDouble()
-                "/" -> output = firstValue.toDouble() / secondValue.toDouble()
-            }
-        }
-        return output
-    }
-
-    fun equals(v: View?) {
+    fun equals(v: View) {
         var input: String = getInput()
         if (!endsWithOperator()) {
-
+            displayText.setText(evaluate(input).toString())
         } else displayText.setText("")
         println(result)
     }

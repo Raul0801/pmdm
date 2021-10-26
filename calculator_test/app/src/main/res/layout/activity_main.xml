@@ -44,7 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/purple_200"
-            android:text="DEL" />
+            android:text="DEL"
+            android:onClick="onDelButton"/>
     </LinearLayout>
 
     <LinearLayout
