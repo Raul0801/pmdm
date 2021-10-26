@@ -5,10 +5,12 @@ plugins {
 
 android {
     compileSdk 31
-
+    viewBinding {
+        enabled = true
+    }
     defaultConfig {
         applicationId "com.example.calculatortest"
-        minSdk 21
+        minSdk 31
         targetSdk 31
         versionCode 1
         versionName "1.0"

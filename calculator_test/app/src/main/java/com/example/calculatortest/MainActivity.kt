@@ -8,24 +8,20 @@ import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var inText: TextView
-    private lateinit var screen: TextView
     private lateinit var displayText: TextView
     private var display: String = ""
     private var operatorUsed: String = ""
-    private var result: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        screen = findViewById(R.id.in_box)
-        screen.text = display
         inText = findViewById(R.id.in_box)
         displayText = findViewById(R.id.out_box)
     }
 
     fun onClickNumber(v: View) {
-        val but: Button = v as Button
+        val but = v as Button
         display += but.text
         append(display)
         display = ""
@@ -55,7 +51,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onDelButton(v: View) {
+        if (inText.text.isNotEmpty()) {
         inText.text = inText.text.substring(0, inText.text.length - 1)
+        }
     }
 
     private fun getInput(): String {
@@ -79,10 +77,13 @@ class MainActivity : AppCompatActivity() {
 
     fun equals(v: View) {
         var input: String = getInput()
-        if (!endsWithOperator()) {
+        if (!endsWithOperator() and input.isNotEmpty() and !startsWithOperator()) {
             displayText.setText(evaluate(input).toString())
         } else displayText.setText("")
-        println(result)
+    }
+
+    private fun startsWithOperator(): Boolean {
+        return getInput().startsWith("+") || getInput().startsWith("-") || getInput().startsWith("*") || getInput().startsWith("/")
     }
 
 }

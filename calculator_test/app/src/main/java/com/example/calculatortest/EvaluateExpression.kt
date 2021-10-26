@@ -1,6 +1,5 @@
 package com.example.calculatortest
 
-import java.lang.UnsupportedOperationException
 import java.util.*
 
 
@@ -117,8 +116,8 @@ fun evaluate(expression: String): Int {
             '-' -> return a - b
             '*' -> return a * b
             '/' -> {
-                if (b == 0) throw UnsupportedOperationException(
-                    "Cannot divide by zero"
+                if (b == 0) (
+                    return 0
                 )
                 return a / b
             }
