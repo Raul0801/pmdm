@@ -34,6 +34,8 @@ class MainActivity : AppCompatActivity() {
         binding.button7.setOnClickListener {v -> onClickNumber(v)}
         binding.button8.setOnClickListener {v -> onClickNumber(v)}
         binding.button9.setOnClickListener {v -> onClickNumber(v)}
+        //TODO
+        //binding.buttonDecimal.setOnClickListener {v -> onClickNumber(v)}
         binding.buttonDelete.setOnClickListener {onDelButton()}
         binding.buttonClear.setOnClickListener {onClearButton()}
         binding.buttonAdd.setOnClickListener {v -> onClickOperator(v)}
@@ -70,7 +72,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun endsWithOperator(): Boolean {
-        return getInput().endsWith("+") || getInput().endsWith("-") || getInput().endsWith("*") || getInput().endsWith("/")
+        return getInput().endsWith("+") || getInput().endsWith("-") || getInput().endsWith("*") || getInput().endsWith("/") || getInput().endsWith("/0")
     }
 
     private fun onDelButton() {

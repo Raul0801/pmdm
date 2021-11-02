@@ -2,12 +2,14 @@ package com.example.calculatortest
 
 import java.util.*
 // Source: https://www.geeksforgeeks.org/expression-evaluation/
+//TODO Create my own evaluate expression method
+//TODO Add decimals to evaluateExpression so users can operate with decimals
 
-fun evaluateGeeksForGeeks(expression: String): Int {
+fun evaluateGeeksForGeeks(expression: String): Double {
         val tokens = expression.toCharArray()
 
         // Stack for numbers: 'values'
-        val values: Stack<Int> = Stack<Int>()
+        val values: Stack<Double> = Stack<Double>()
 
         // Stack for Operators: 'ops'
         val ops: Stack<Char> = Stack<Char>()
@@ -32,7 +34,7 @@ fun evaluateGeeksForGeeks(expression: String): Int {
                 // There may be more than one
                 // digits in number
                 while (i < tokens.size && tokens[i] >= '0' && tokens[i] <= '9') sbuf.append(tokens[i++])
-                values.push(sbuf.toString().toInt())
+                values.push(sbuf.toString().toDouble())
 
                 // right now the i points to
                 // the character next to the digit,
@@ -42,7 +44,14 @@ fun evaluateGeeksForGeeks(expression: String): Int {
                 // decrease the value of i by 1 to
                 // correct the offset.
                 i--
-            } else if (tokens[i] == '(') ops.push(tokens[i]) else if (tokens[i] == ')') {
+
+            // Current token is an opening brace,
+            // push it to 'ops'
+            } else if (tokens[i] == '(') ops.push(tokens[i])
+
+            // Closing brace encountered,
+            // solve entire brace
+            else if (tokens[i] == ')') {
                 while (ops.peek() !== '(') values.push(
                     applyOp(
                         ops.pop(),
@@ -51,6 +60,7 @@ fun evaluateGeeksForGeeks(expression: String): Int {
                     )
                 )
                 ops.pop()
+                // Current token is an operator.
             } else if (tokens[i] == '+' || tokens[i] == '-' || tokens[i] == '*' || tokens[i] == '/') {
                 // While top of 'ops' has same
                 // or greater precedence to current
@@ -109,18 +119,18 @@ fun evaluateGeeksForGeeks(expression: String): Int {
     // and 'b'. Return the result.
     fun applyOp(
         op: Char,
-        b: Int, a: Int
-    ): Int {
+        b: Double, a: Double
+    ): Double {
         when (op) {
-            '+' -> return a + b
-            '-' -> return a - b
-            '*' -> return a * b
+            '+' -> return (a + b)
+            '-' -> return (a - b)
+            '*' -> return (a * b)
             '/' -> {
-                if (b == 0) (
-                    return 0
+                if (b == 0.0) (
+                    return 0.0
                 )
-                return a / b
+                return (a / b)
             }
         }
-        return 0
+        return 0.0
     }
