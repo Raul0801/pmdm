@@ -1,5 +1,6 @@
 package com.example.carricoba_raul_p1_ui
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -15,49 +16,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setContentView(binding.root)
 
-        binding.btnEj1.setOnClickListener {
-            val intent = Intent(this, Ej1Activity::class.java)
-            startActivity(intent)
-        }
-        binding.btnEj2.setOnClickListener {
-            val intent = Intent(this, Ej2Activity::class.java)
-            startActivity(intent)
-        }
-        binding.btnEj3.setOnClickListener {
-            val intent = Intent(this, Ej3Activity::class.java)
-            startActivity(intent)
-        }
-        binding.btnEj4.setOnClickListener {
-            val intent = Intent(this, Ej4Activity::class.java)
-            startActivity(intent)
-        }
-        binding.btnEj5.setOnClickListener {
-            val intent = Intent(this, Ej5Activity::class.java)
-            startActivity(intent)
-        }
-        binding.btnEj6.setOnClickListener {
-            val intent = Intent(this, Ej6Activity::class.java)
-            startActivity(intent)
-        }
-        binding.btnEj7.setOnClickListener {
-            val intent = Intent(this, Ej7Activity::class.java)
-            startActivity(intent)
-        }
-        binding.btnEj8.setOnClickListener {
-            val intent = Intent(this, Ej8Activity::class.java)
-            startActivity(intent)
-        }
-        binding.btnEj9.setOnClickListener {
-            val intent = Intent(this, Ej9Activity::class.java)
-            startActivity(intent)
-        }
-        binding.btnEj10.setOnClickListener {
-            val intent = Intent(this, Ej10Activity::class.java)
-            startActivity(intent)
-        }
-        binding.btnEj11.setOnClickListener {
-            val intent = Intent(this, Ej11Activity::class.java)
-            startActivity(intent)
-        }
+        binding.btnEj1.setOnClickListener {moveToActivity(this, Ej1Activity::class.java)}
+        binding.btnEj2.setOnClickListener {moveToActivity(this, Ej2Activity::class.java)}
+        binding.btnEj3.setOnClickListener {moveToActivity(this, Ej3Activity::class.java)}
+        binding.btnEj4.setOnClickListener {moveToActivity(this, Ej4Activity::class.java)}
+        binding.btnEj5.setOnClickListener {moveToActivity(this, Ej5Activity::class.java)}
+        binding.btnEj6.setOnClickListener {moveToActivity(this, Ej6Activity::class.java)}
+        binding.btnEj7.setOnClickListener {moveToActivity(this, Ej7Activity::class.java)}
+        binding.btnEj8.setOnClickListener {moveToActivity(this, Ej8Activity::class.java)}
+        binding.btnEj9.setOnClickListener {moveToActivity(this, Ej9Activity::class.java)}
+        binding.btnEj10.setOnClickListener {moveToActivity(this, Ej10Activity::class.java)}
+        binding.btnEj11.setOnClickListener {moveToActivity(this, Ej11Activity::class.java)}
     }
+
+    fun moveToActivity(activity: Activity, clase: Class<*>?) {
+        val intent = Intent(activity, clase)
+        startActivity(intent)
+    }
+
 }
