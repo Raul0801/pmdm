@@ -30,9 +30,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun onDrawCircle(view: View) {
         val counter = view as ImageView
+        // Tags to know where to "drop" the circles. They go from 0 to 8; 0 being top left and 8 bottom right
         val tappedCounter = counter.tag.toString().toInt()
         if (gameState[tappedCounter] == 2 && gameActive) {
             gameState[tappedCounter] = activePlayer
+            // "Moved" the circles out of frame
             counter.translationY = -1500f
             activePlayer = if (activePlayer == 0) {
                 counter.setImageResource(R.drawable.yellow_circle)
@@ -41,10 +43,11 @@ class MainActivity : AppCompatActivity() {
                 counter.setImageResource(R.drawable.red_circle)
                 0
             }
-            counter.animate().translationYBy(1500f).rotation(3600f).duration = 300
+            // Animate the circles appearing(dropping in from above)
+            counter.animate().translationYBy(1500f).duration = 300
             for (winningPosition in winningPositions) {
                 if (gameState[winningPosition[0]] == gameState[winningPosition[1]] && gameState[winningPosition[1]] == gameState[winningPosition[2]] && gameState[winningPosition[0]] != 2) {
-                    //Someone has won
+                    // Someone has won
                     gameActive = false
                     val winner : String = if (activePlayer == 1) {
                         "Yellow"
@@ -58,6 +61,7 @@ class MainActivity : AppCompatActivity() {
                     winnerTextView.visibility = View.VISIBLE
                 }
             }
+            // Need to show the restart button when there are no empty spaces left, in case nobody won
             if(!gameState.contains(2)) {
                 val playAgainButton = findViewById<Button>(R.id.playAgainButton)
                 playAgainButton.visibility = View.VISIBLE
@@ -71,13 +75,16 @@ class MainActivity : AppCompatActivity() {
         playAgainButton.visibility = View.INVISIBLE
         winnerTextView.visibility = View.INVISIBLE
         val gridLayout = findViewById<GridLayout>(R.id.gridLayout)
+        // Reset drawables
         for (i in 0 until gridLayout.childCount) {
             val counter = gridLayout.getChildAt(i) as ImageView
             counter.setImageDrawable(null)
         }
+        // Assign "empty spaces"
         for (i in gameState.indices) {
             gameState[i] = 2
         }
+        // Active player is yellow again
         activePlayer = 0
         gameActive = true
     }
