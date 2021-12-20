@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         resetTextViewsAndCounters()
         if(activePlayer == 0) {
             binding.constraintLayout.setBackgroundColor(Color.parseColor(yellow))
-            binding.textViewPlayerInfo.setText("Player 1: make up to " + (currentLvl+1).toString() + " clicks")
+            binding.textViewPlayerInfo.text = "Player 1: make up to " + (currentLvl+1).toString() + " clicks"
             binding.textViewPlayerInfo.visibility = View.VISIBLE
             showButtons()
             showTextViews()
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             remainingClicks = currentLvl
         } else {
             binding.constraintLayout.setBackgroundColor(Color.parseColor(orange))
-            binding.textViewPlayerInfo.setText("Player 2: make up to " + (currentLvl+1).toString() + " clicks")
+            binding.textViewPlayerInfo.text = "Player 2: make up to " + (currentLvl+1).toString() + " clicks"
             showButtons()
             showTextViews()
             binding.buttonNewRound.visibility = View.INVISIBLE
@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun onOkBtn1() {
         if(activePlayer == 0) {
-            binding.textViewPlayerInfo.setText("Player 1: try to repeat player 2's clicks (" + (currentLvl).toString() + ") clicks")
+            binding.textViewPlayerInfo.text = "Player 1: try to repeat player 2's clicks (" + (currentLvl).toString() + ") clicks"
             binding.constraintLayout.setBackgroundColor(Color.parseColor(yellow))
             resetTextViewsAndCounters()
             activePlayer = 1
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
             binding.buttonOk1.visibility = View.INVISIBLE
             binding.buttonOk2.visibility = View.VISIBLE
         } else {
-            binding.textViewPlayerInfo.setText("Player 2: try to repeat player 1's clicks (" + (currentLvl).toString() + ") clicks")
+            binding.textViewPlayerInfo.text = "Player 2: try to repeat player 1's clicks (" + (currentLvl).toString() + ") clicks"
             binding.constraintLayout.setBackgroundColor(Color.parseColor(orange))
             resetTextViewsAndCounters()
             activePlayer = 0
@@ -91,8 +91,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun onOkBtn2() {
         checkWin()
-        binding.textViewPlayerInfo.setText("")
-        binding.textViewLvl.setText("Level : " + (currentLvl+1))
+        binding.textViewPlayerInfo.text = ""
+        binding.textViewLvl.text = "Level : " + (currentLvl+1)
         binding.buttonOk2.visibility = View.INVISIBLE
         binding.buttonNewRound.visibility = View.VISIBLE
         hideButtons()
@@ -180,7 +180,7 @@ class MainActivity : AppCompatActivity() {
         if(activePlayer == 0) {
             if(checkCounters()) {
                 player2Score += currentLvl
-                binding.textViewPlayer2.setText("Player 2: $player2Score")
+                binding.textViewPlayer2.text = "Player 2: $player2Score"
                 Toast.makeText(this, "Congratulations! Player 2 got it right.", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Oops! Player 2 got it wrong.", Toast.LENGTH_SHORT).show()
@@ -188,7 +188,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             if(checkCounters()) {
                 player1Score += currentLvl
-                binding.textViewPlayer1.setText("Player 1: $player1Score")
+                binding.textViewPlayer1.text = "Player 1: $player1Score"
                 Toast.makeText(this, "Congratulations! Player 1 got it right.", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Oops! Player 1 got it wrong.", Toast.LENGTH_SHORT).show()
