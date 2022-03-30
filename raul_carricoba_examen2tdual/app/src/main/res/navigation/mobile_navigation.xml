@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.raul_carricoba_examen2tdual.ui.inicio.InicioFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_inicio" />
+
+    <fragment
+        android:id="@+id/nav_adivina"
+        android:name="com.example.raul_carricoba_examen2tdual.ui.adivinaPalabra.TitleFragment"
+        android:label="Adivina la Palabra"
+        tools:layout="@layout/fragment_title">
+        <action
+            android:id="@+id/action_title_to_game"
+            app:destination="@id/game_destination"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/game_destination"
+        android:name="com.example.raul_carricoba_examen2tdual.ui.adivinaPalabra.AdivinaFragment"
+        android:label="Adivina la Palabra"
+        tools:layout="@layout/fragment_adivina">
+        <action
+            android:id="@+id/action_game_to_score"
+            app:destination="@id/score_destination"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:popUpTo="@+id/title_destination" />
+    </fragment>
+    <fragment
+        android:id="@+id/score_destination"
+        android:name="com.example.raul_carricoba_examen2tdual.ui.adivinaPalabra.ScoreFragment"
+        android:label="Puntuación"
+        tools:layout="@layout/fragment_score">
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_tres"
+        android:name="com.example.raul_carricoba_examen2tdual.ui.tresEnRaya.TresEnRayaFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_tresenraya" >
+        <action
+            android:id="@+id/action_nav_tres_to_nav_juego"
+            app:destination="@id/nav_juego" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_juego"
+        android:name="com.example.raul_carricoba_examen2tdual.ui.tresEnRaya.TresEnRayaJuegoFragment"
+        android:label="@string/menu_juego"
+        tools:layout="@layout/fragment_juego" >
+        <action
+            android:id="@+id/action_nav_juego_to_nav_ganador"
+            app:destination="@id/nav_ganador" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_ganador"
+        android:name="com.example.raul_carricoba_examen2tdual.ui.tresEnRaya.TresEnRayaGanadorFragment"
+        android:label="@string/menu_ganador"
+        tools:layout="@layout/fragment_ganador" >
+        <argument
+            android:name="ganador"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null"/>
+    </fragment>
+</navigation>

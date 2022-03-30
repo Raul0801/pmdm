@@ -49,14 +49,10 @@ class MainActivity : AppCompatActivity() {
                 if (gameState[winningPosition[0]] == gameState[winningPosition[1]] && gameState[winningPosition[1]] == gameState[winningPosition[2]] && gameState[winningPosition[0]] != 2) {
                     // Someone has won
                     gameActive = false
-                    val winner : String = if (activePlayer == 1) {
-                        "Yellow"
-                    } else {
-                        "Red"
-                    }
+                    val winner = if (activePlayer == 1) "Yellow" else "Red"
                     val playAgainButton = findViewById<Button>(R.id.playAgainButton)
                     val winnerTextView = findViewById<TextView>(R.id.winnerTextView)
-                    "$winner is the winner!".also { winnerTextView.text = it }
+                    "$winner wins!".also { winnerTextView.text = it }
                     playAgainButton.visibility = View.VISIBLE
                     winnerTextView.visibility = View.VISIBLE
                 }
@@ -64,6 +60,9 @@ class MainActivity : AppCompatActivity() {
             // Need to show the restart button when there are no empty spaces left, in case nobody won
             if(!gameState.contains(2)) {
                 val playAgainButton = findViewById<Button>(R.id.playAgainButton)
+                val winnerTextView = findViewById<TextView>(R.id.winnerTextView)
+                "Draw!".also { winnerTextView.text = it }
+                winnerTextView.visibility = View.VISIBLE
                 playAgainButton.visibility = View.VISIBLE
             }
         }

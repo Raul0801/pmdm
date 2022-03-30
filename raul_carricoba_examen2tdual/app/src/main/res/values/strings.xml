@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">raul_carricoba_examen2tdual</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Configuración</string>
+    <string name="skip">Saltar</string>
+    <string name="play_again">Reiniciar</string>
+    <string name="you_scored">Puntuación</string>
+    <string name="title_text">¡Adivina la palabra!</string>
+    <string name="play_button">Jugar</string>
+    <string name="get_ready">Prepárate</string>
+    <string name="got_it">Acertaste</string>
+    <string name="end_game">Terminar</string>
+    <string name="word_is">La palabra es...</string>
+    <string name="menu_home">Inicio</string>
+    <string name="menu_juego">Tres en raya</string>
+    <string name="menu_ganador">Ganador</string>
+    <string name="navigation_drawer">Navigation Drawer</string>
+    <string name="bottom_navigation">Bottom Navigation</string>
+    <string name="inicio_tresraya">Pulsa para empezar</string>
+    <string name="menu_gallery">Adivina la Palabra</string>
+    <string name="menu_slideshow">Tres en Raya</string>
+
+    <string-array name="palabras">
+        <item>queen</item>
+        <item>hospital</item>
+        <item>basketball</item>
+        <item>cat</item>
+        <item>change</item>
+        <item>snail</item>
+        <item>soup</item>
+        <item>calendar</item>
+        <item>sad</item>
+        <item>desk</item>
+        <item>guitar</item>
+        <item>home</item>
+        <item>railway</item>
+        <item>zebra</item>
+        <item>jelly</item>
+        <item>car</item>
+        <item>crow</item>
+        <item>trade</item>
+        <item>bag</item>
+        <item>roll</item>
+        <item>bubble</item>
+    </string-array>
+
+</resources>

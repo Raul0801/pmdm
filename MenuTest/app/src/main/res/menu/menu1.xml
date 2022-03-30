@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/item1"
+        android:title="ITEM 1"
+        app:showAsAction="ifRoom" />
+    <!--
+        app:showAsAction permite especificar cuándo y cómo deberá aparecer en la ActionBar:
+            ifRoom: si hay espacio; never, always...
+    -->
+
+
+    <item
+        android:id="@+id/item_submenu"
+        android:title="ITEM con submenú">
+
+        <menu>
+            <item
+                android:id="@+id/item2"
+                android:icon="@android:drawable/ic_menu_add"
+                android:title="Insertar" />
+            <!-- También se puede referenciar cualquier icono que esté en drawable:
+        android:icon="@drawable/ic_baseline_menu_24" -->
+            <item
+                android:id="@+id/item3"
+                android:icon="@android:drawable/ic_delete"
+                android:title="Eliminar" />
+        </menu>
+    </item>
+</menu>
